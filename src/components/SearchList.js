@@ -7,8 +7,8 @@ const SearchList = ({ users = [] }) =>
     <div className="list-empty">Nope</div>
   ) : (
     users.map(user => (
-      <Link to={`/users/${user.login}`}>
-        <img className="list-avatar" src={user.avatarUrl} alt="user avatar" />
+      <Link className="list-item" to={`/users/${user.login}`}>
+        <img className="list-avatar" src={user.avatar_url} alt="user avatar" />
         {user.login}
       </Link>
     ))
