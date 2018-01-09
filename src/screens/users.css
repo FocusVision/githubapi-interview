@@ -1,0 +1,35 @@
+.search {
+  background: #eee;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.list {
+  background: #fff;
+  flex: 1;
+}
+
+.content {
+  padding: 2rem 0;
+}
+
+.list-header {
+  background: #f2f2f2;
+  display: flex;
+  padding: 1rem;
+}
+
+.list-header input[type=text] {
+  font-size: 2rem;
+  flex: 1;
+  padding: 1rem;
+  border: 0 none;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+
+}
+
+.list-header input[type=text]:focus,
+.list-header input[type=text]:active {
+  outline: none;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
