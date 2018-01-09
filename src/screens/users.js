@@ -8,12 +8,28 @@ import User from './users/user'
 
 class Users extends Component {
   state = {
-    query: 'FocusVision',
+    query: this.props.query.get('q'),
     users: []
   }
 
   componentDidMount() {
-    const { query } = this.state
+    this.fetchUsers()
+  }
+
+  componentDidUpdate(prevProps) {
+    const { query } = this.props
+
+    if (query !== prevProps.query) {
+      this.fetchUsers()
+    }
+  }
+
+  fetchUsers = () => {
+    const query = this.props.query.get('q')
+
+    if (!query) {
+      return
+    }
 
     fetch(`https://api.github.com/search/users?q=${query}`, {
       headers: {
@@ -29,6 +45,14 @@ class Users extends Component {
       .then(({ items }) => this.setState({ users: items }))
   }
 
+  handleChange = e => {
+    this.setState({ query: e.target.value }, () => {
+      this.props.history.push({
+        search: `?q=${this.state.query}`
+      })
+    })
+  }
+
   render() {
     const { match: { path } } = this.props
     const { users, query } = this.state
@@ -37,7 +61,7 @@ class Users extends Component {
       <main>
         <div className="search">
           <div className="list-header">
-            <SearchFilter query={query} />
+            <SearchFilter query={query} onChange={this.handleChange} />
           </div>
           <div className="list">
             <SearchList users={users} />
