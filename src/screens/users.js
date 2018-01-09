@@ -1,9 +1,12 @@
 import React from 'react'
 import SearchFilter from '../components/SearchFilter'
 import SearchList from '../components/SearchList'
+import { Route } from 'react-router-dom'
 import './users.css'
 
-const Users = () => (
+import User from './users/user'
+
+const Users = ({ match: { path } }) => (
   <main>
     <div className="search">
       <div className="list-header">
@@ -14,7 +17,9 @@ const Users = () => (
       </div>
     </div>
 
-    <div className="content" />
+    <div className="content">
+      <Route path={`${path}/:userId`} component={User} />
+    </div>
   </main>
 )
 
