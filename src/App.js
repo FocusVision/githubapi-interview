@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    )
-  }
-}
+const App = () => (
+  <Switch>
+    <Route path="/" exact render={() => <Redirect to="/users" />} />
+  </Switch>
+)
 
 export default App
