@@ -2,8 +2,6 @@ body {
   font-family: 'helvetica', 'arial', sans-serif;
   background: #eee;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
 }
 
 main {
@@ -11,4 +9,9 @@ main {
   padding: 2rem;
   max-width: 600px;
   width: 100%;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
 }
