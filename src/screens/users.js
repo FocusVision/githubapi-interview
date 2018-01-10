@@ -52,7 +52,7 @@ class Users extends Component {
             />
           </div>
           <div className="list">
-            <SearchList users={users} />
+            {query.get('q') && <SearchList users={users} />}
           </div>
         </div>
 
