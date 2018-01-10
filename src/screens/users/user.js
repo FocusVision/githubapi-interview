@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import request from '../../utils/api'
-import './user.css'
 
 class User extends Component {
   state = {
-    loading: true,
+    loading: false,
     user: {},
     repos: []
   }
@@ -22,16 +21,9 @@ class User extends Component {
   }
 
   fetchData = login => {
-    Promise.all([
-      request(`/users/${login}`),
-      request(`/users/${login}/repos`)
-    ]).then(([user, repos]) =>
-      this.setState({
-        user,
-        repos,
-        loading: false
-      })
-    )
+    // Fetch the user and the user's repos using the github API.
+    // The `request` function imported above will help build the base URL and
+    // Auth header for you.
   }
 
   render() {
@@ -42,33 +34,10 @@ class User extends Component {
     }
 
     return (
-      <Fragment>
-        <div className="user-details">
-          <img
-            alt="user avatar"
-            src={user.avatar_url}
-            className="user-avatar"
-          />
-          <div className="user-details-meta">
-            <h3>{user.login}</h3>
-            <p>{user.name}</p>
-          </div>
-        </div>
-        <h3>Repos</h3>
-        <div className="list list-repo">
-          {repos.map(repo => (
-            <a
-              key={repo.id}
-              href={repo.html_url}
-              target="_blank"
-              className="list-item"
-            >
-              <strong>{repo.name}</strong>
-              {repo.description}
-            </a>
-          ))}
-        </div>
-      </Fragment>
+      <div>
+        This is where you will write stuff for {this.props.match.params.login}'s
+        profle
+      </div>
     )
   }
 }
