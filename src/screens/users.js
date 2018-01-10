@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import SearchFilter from '../components/SearchFilter'
 import SearchList from '../components/SearchList'
 import { Route } from 'react-router-dom'
-import debounce from 'lodash/debounce'
 import './users.css'
 
 import User from './users/user'
 
 class Users extends Component {
   state = {
-    query: this.props.query.get('q'),
     users: []
   }
 
@@ -46,27 +44,18 @@ class Users extends Component {
       .then(({ items }) => this.setState({ users: items }))
   }
 
-  handleChange = e => {
-    this.setState({ query: e.target.value }, () => {
-      this.navigate(this.state.query)
-    })
-  }
-
-  navigate = debounce(query => {
-    this.props.history.push({
-      search: `q=${query}`
-    })
-  }, 250)
-
   render() {
-    const { match: { path } } = this.props
-    const { users, query } = this.state
+    const { match: { path }, query, history } = this.props
+    const { users } = this.state
 
     return (
       <main>
         <div className="search">
           <div className="list-header">
-            <SearchFilter query={query} onChange={this.handleChange} />
+            <SearchFilter
+              initialValue={query.get('q')}
+              onChange={query => history.push({ search: `q=${query}` })}
+            />
           </div>
           <div className="list">
             <SearchList users={users} />
