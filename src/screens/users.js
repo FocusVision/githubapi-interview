@@ -25,7 +25,7 @@ class Users extends Component {
   }
 
   fetchUsers = () => {
-    const query = this.props.query.get('q')
+    const query = this.props.query.get('qq')
 
     if (!query) {
       return this.setState({ users: [] })
