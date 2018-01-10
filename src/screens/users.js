@@ -27,7 +27,7 @@ class Users extends Component {
     const query = this.props.query.get('q')
 
     if (!query) {
-      return
+      return this.setState({ users: [] })
     }
 
     fetch(`https://api.github.com/search/users?q=${query}`, {
@@ -54,7 +54,9 @@ class Users extends Component {
           <div className="list-header">
             <SearchFilter
               initialValue={query.get('q')}
-              onChange={query => history.push({ search: `q=${query}` })}
+              onChange={query =>
+                history.push({ search: query ? `q=${query}` : '' })
+              }
             />
           </div>
           <div className="list">
