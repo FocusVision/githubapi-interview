@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from '../../utils/api'
+import RepoList from '../../components/RepoList'
 
 class User extends Component {
   state = {
@@ -39,14 +40,7 @@ class User extends Component {
           <h1>{user.name}</h1>
           <p>{user.login}</p>
         </div>
-        {
-          repos.map(({id, name, description, html_url}) =>
-            <div key={id} onClick={() => window.location.replace(html_url)}>
-              <h3>{name}</h3>
-              <p>{description}</p>
-            </div>
-          )
-        }
+        <RepoList repos={repos} />
       </div>
     )
   }

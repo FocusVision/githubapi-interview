@@ -1,0 +1,12 @@
+.repo-item {
+  padding: 1rem;
+  font-weight: bold;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.repo-item:hover {
+  cursor: pointer;
+  background: #f2f2f2;
+}
