@@ -10,8 +10,18 @@ class User extends Component {
   }
 
   componentDidMount() {
-    const { match: { params: { login } } } = this.props
+    this.fetchData(this.props.match.params.login)
+  }
 
+  componentWillReceiveProps({ match: { params: { login: nextLogin } } }) {
+    const { match: { params: { login: currentLogin } } } = this.props
+
+    if (currentLogin !== nextLogin) {
+      this.fetchData(nextLogin)
+    }
+  }
+
+  fetchData = login => {
     Promise.all([
       request(`/users/${login}`),
       request(`/users/${login}/repos`)
