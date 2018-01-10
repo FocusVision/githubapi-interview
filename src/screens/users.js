@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import SearchFilter from '../components/SearchFilter'
 import SearchList from '../components/SearchList'
 import { Route } from 'react-router-dom'
-import api from '../utils/api'
+import request from '../utils/api'
 import './users.css'
 
 import User from './users/user'
@@ -31,7 +31,7 @@ class Users extends Component {
       return this.setState({ users: [] })
     }
 
-    api(`/search/users?q=${query}`).then(({ items }) =>
+    request(`/search/users?q=${query}`).then(({ items }) =>
       this.setState({ users: items })
     )
   }
