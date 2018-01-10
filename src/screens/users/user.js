@@ -21,9 +21,8 @@ class User extends Component {
   }
 
   fetchData = login => {
-    // Fetch the user and the user's repos using the github API.
-    // The `request` function imported above will help build the base URL and
-    // Auth header for you.
+    request(`/users/${login}/repos`).then(repos => this.setState({ repos }))
+    request(`/users/${login}`).then(user => this.setState({ user }))
   }
 
   render() {
@@ -37,6 +36,14 @@ class User extends Component {
       <div>
         This is where you will write stuff for {this.props.match.params.login}'s
         profle
+        {
+          repos.map(({name, description, html_url}) =>
+            <div onClick={() => window.location.replace(html_url)}>
+              <h3>{name}</h3>
+              <p>{description}</p>
+            </div>
+          )
+        }
       </div>
     )
   }
