@@ -4,7 +4,7 @@ import './SearchFilter.css'
 
 class SearchFilter extends Component {
   state = {
-    value: this.props.initialValue
+    value: this.props.initialValue || ''
   }
 
   handleChange = e => {
