@@ -31,7 +31,7 @@ class Users extends Component {
       return this.setState({ users: [] })
     }
 
-    request(`/search/users?q=${query}`).then(({ items }) =>
+    request(`/search/users?q=${query}`).then(items =>
       this.setState({ users: items })
     )
   }
