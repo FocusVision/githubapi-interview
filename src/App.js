@@ -8,11 +8,9 @@ const App = () => (
     <Route path="/" exact render={() => <Redirect to="/users" />} />
     <Route
       path="/users"
-      render={props => {
-        const queryParams = new URLSearchParams(props.location.search)
-
-        return <Users {...props} query={queryParams} />
-      }}
+      render={props => (
+        <Users {...props} query={new URLSearchParams(props.location.search)} />
+      )}
     />
   </Switch>
 )
