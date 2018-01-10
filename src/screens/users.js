@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SearchFilter from '../components/SearchFilter'
 import SearchList from '../components/SearchList'
 import { Route } from 'react-router-dom'
+import api from '../utils/api'
 import './users.css'
 
 import User from './users/user'
@@ -30,18 +31,9 @@ class Users extends Component {
       return this.setState({ users: [] })
     }
 
-    fetch(`https://api.github.com/search/users?q=${query}`, {
-      headers: {
-        Accept: 'application/vnd.github.v3+json',
-        Authorization: `Basic ${btoa(
-          `${process.env.REACT_APP_GITHUB_USERNAME}:${
-            process.env.REACT_APP_GITHUB_TOKEN
-          }`
-        )}`
-      }
-    })
-      .then(response => response.json())
-      .then(({ items }) => this.setState({ users: items }))
+    api(`/search/users?q=${query}`).then(({ items }) =>
+      this.setState({ users: items })
+    )
   }
 
   render() {
