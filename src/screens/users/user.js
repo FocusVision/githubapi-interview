@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import request from '../../utils/api'
+import './user.css'
 
 class User extends Component {
   state = {
@@ -32,17 +33,26 @@ class User extends Component {
 
     return (
       <Fragment>
-        <div class="user-details">
-          <img src={user.avatar_url} class="user-avatar" />
+        <div className="user-details">
+          <img
+            alt="user avatar"
+            src={user.avatar_url}
+            className="user-avatar"
+          />
           <div className="user-details-meta">
             <h3>{user.login}</h3>
             <p>{user.name}</p>
           </div>
         </div>
         <h3>Repos</h3>
-        <div class="list list-repo">
+        <div className="list list-repo">
           {repos.map(repo => (
-            <a href={repo.html_url} target="_blank" class="list-item">
+            <a
+              key={repo.id}
+              href={repo.html_url}
+              target="_blank"
+              className="list-item"
+            >
               <strong>{repo.name}</strong>
               {repo.description}
             </a>
