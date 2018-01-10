@@ -34,11 +34,14 @@ class User extends Component {
 
     return (
       <div>
-        This is where you will write stuff for {this.props.match.params.login}'s
-        profle
+        <div>
+          <img src={user.avatar_url} alt={user.name} />
+          <h1>{user.name}</h1>
+          <p>{user.login}</p>
+        </div>
         {
-          repos.map(({name, description, html_url}) =>
-            <div onClick={() => window.location.replace(html_url)}>
+          repos.map(({id, name, description, html_url}) =>
+            <div key={id} onClick={() => window.location.replace(html_url)}>
               <h3>{name}</h3>
               <p>{description}</p>
             </div>
