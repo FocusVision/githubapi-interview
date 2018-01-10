@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './RepoList.css'
 
 const RepoList = ({ repos = [] }) =>
@@ -7,10 +6,10 @@ const RepoList = ({ repos = [] }) =>
     <div className="list-empty">No repos</div>
   ) : (
     repos.map(({id, name, description, html_url})=> (
-      <Link key={id} className="repo-item" to={html_url}>
+      <a key={id} className="repo-item" href={html_url}>
         <h3>{name}</h3>
         <p>{description}</p>
-      </Link>
+      </a>
     ))
   )
 
