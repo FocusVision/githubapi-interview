@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import request from '../../utils/api'
 import RepoList from '../../components/RepoList'
+import './user.css'
 
 class User extends Component {
   state = {
@@ -36,10 +37,13 @@ class User extends Component {
     return (
       <div>
         <div>
-          <img src={user.avatar_url} alt={user.name} />
-          <h1>{user.name}</h1>
-          <p>{user.login}</p>
+          <img className='user-avatar' src={user.avatar_url} alt={user.name} />
+          <div className='user-info'>
+            <h1>{user.name}</h1>
+            <p>{user.login}</p>
+          </div>
         </div>
+        <h2>Repositories</h2>
         <RepoList repos={repos} />
       </div>
     )
