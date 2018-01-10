@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SearchFilter from '../components/SearchFilter'
 import SearchList from '../components/SearchList'
 import { Route } from 'react-router-dom'
+import debounce from 'lodash/debounce'
 import './users.css'
 
 import User from './users/user'
@@ -47,11 +48,15 @@ class Users extends Component {
 
   handleChange = e => {
     this.setState({ query: e.target.value }, () => {
-      this.props.history.push({
-        search: `?q=${this.state.query}`
-      })
+      this.navigate(this.state.query)
     })
   }
+
+  navigate = debounce(query => {
+    this.props.history.push({
+      search: `q=${query}`
+    })
+  }, 250)
 
   render() {
     const { match: { path } } = this.props
