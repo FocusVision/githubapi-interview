@@ -57,7 +57,7 @@ class Users extends Component {
         </div>
 
         <div className="content">
-          <Route path={`${path}/:userId`} component={User} />
+          <Route path={`${path}/:login`} component={User} />
         </div>
       </main>
     )
