@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+import Users from './screens/users'
 
-export default App;
+const App = () => (
+  <Switch>
+    <Route path="/" exact render={() => <Redirect to="/users" />} />
+    <Route
+      path="/users"
+      render={props => (
+        <Users {...props} query={new URLSearchParams(props.location.search)} />
+      )}
+    />
+  </Switch>
+)
+
+export default App
