@@ -1,6 +1,7 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import SearchList from './SearchList'
+import { MemoryRouter } from 'react-router-dom'
 
 it('does not show list', () => {
   const wrapper = shallow(<SearchList users={[]} />)
@@ -15,7 +16,11 @@ it('displays list', () => {
 })
 
 it('displays user avatar and login name', () => {
-  const wrapper = shallow(<SearchList users={[]} />)
+  const wrapper = mount(
+    <MemoryRouter>
+      <SearchList users={ users } />
+    </MemoryRouter>
+  )
 
   expect(true).toBe(false)
 })
