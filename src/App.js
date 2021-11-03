@@ -1,17 +1,15 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
-
-import Users from './screens/users'
+import Users from './components/Users'
 
 const App = () => (
   <Switch>
-    <Route path="/" exact render={() => <Redirect to="/users" />} />
-    <Route
-      path="/users"
-      render={props => (
-        <Users {...props} query={new URLSearchParams(props.location.search)} />
-      )}
-    />
+    <Route path="/" exact>
+      <Redirect to="/users" />
+    </Route>
+    <Route path="/users">
+      <Users />
+    </Route>
   </Switch>
 )
 
