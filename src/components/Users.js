@@ -11,7 +11,7 @@ const Users = () => {
   const history = useHistory()
   const { path } = useRouteMatch()
   const { search } = useLocation()
-  const q = new URLSearchParams(search).get('q') || ''
+  const q = new URLSearchParams(search).get('qq') || ''
   const [users, setUsers] = useState([])
 
   const updateUsersFromQuery = useMemo(
