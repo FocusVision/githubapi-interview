@@ -17,8 +17,7 @@ const Users = () => {
   const updateUsersFromQuery = useMemo(
     () =>
       debounce(
-        (q) =>
-          request(`/search/users?q=${q}`).then(({ items }) => setUsers(items)),
+        (q) => request(`/search/users?q=${q}`).then((items) => setUsers(items)),
         300
       ),
     []
