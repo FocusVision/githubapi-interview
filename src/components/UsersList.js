@@ -8,7 +8,7 @@ const UsersList = ({ users = [] }) =>
   ) : (
     users.map((user) => (
       <Link key={user.id} className="list-item" to={`/users/${user.login}`}>
-        <img className="list-avatar" src={user.avatar_url} alt="user avatar" />
+        <img className="list-avatar" src={user.avatar} alt="user avatar" />
         {user.login}
       </Link>
     ))
